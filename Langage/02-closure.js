@@ -10,6 +10,7 @@ function externe(msg) {
 }
 
 const helloFct = externe('Hello');
+
 helloFct();
 
 // pile d'appels

@@ -24,5 +24,5 @@ console.log('Fin');
 // +--------------------------------------------------------0,5-----1---> temps
 // output                                  Fin              cb2     cb1   cb3
 //
-// file d'attente :
+// file d'attente : 
 

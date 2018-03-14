@@ -16,6 +16,7 @@ console.log(typeof db); // object (dans MongoShell)
 // Les objets JS sont extensibles
 
 console.log(Math.sum); // undefined
+console.log(Math.hasOwnProperty('sum')); // false
 
 // Ajouter des propriétés/méthodes
 Math.sum = (a, b) => a + b;
@@ -78,7 +79,9 @@ const coords3dFactory = (x, y, z) => {
     z: z,
     getInfos: function() { return 'x ' + this.x; },
   };
-}
+};
+
+const coords3dFactoryES6 = (x = 0, y = 0, z = 0) => ({ x, y, z });
 
 const coords3dA = coords3dFactory(10, 20);
 const coords3dB = coords3dFactory(10, 20);
@@ -92,6 +95,10 @@ const Contact = function(prenom) {
   this._prenom = prenom;
 };
 
+Contact.getClass = function() {
+  return 'Contact';
+};
+
 Contact.prototype.hello = function() {
   return 'Bonjour je suis ' + this._prenom;
 };
@@ -101,10 +108,11 @@ console.log(typeof romain); // object
 console.log(romain instanceof Contact); // true
 console.log(romain._prenom); // Romain (ici on ne devrait utiliser _prenom
 // car privée)
+console.log(Contact.getClass());
 console.log(romain.hello());
 console.log(romain.hasOwnProperty('_prenom')); // true
 console.log(romain.hasOwnProperty('hello')); // false
 
 
-const eric = new Contact();
+const eric = new Contact('Eric');
 console.log(romain.hello === eric.hello); // true

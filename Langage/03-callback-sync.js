@@ -12,6 +12,13 @@ prenoms
 
 console.log('Fin');
 
+console.log(prenoms.join(', ')); // Romain, Jean, Eric
+
+const nbs = [3, 2, 1];
+
+const sum = nbs.reduce((acc, nb) => acc + nb, 0);
+console.log('Sum', sum);
+
 
 // pile d'appels
 // ^
@@ -23,4 +30,4 @@ console.log('Fin');
 // |=> - => - =>   => - =>   cb - cb
 // |filter       - map     - forEach   - log('Fin')
 // +-------------------------------------------> temps
-// output                    Jean Eric   Fin
+// output                    JEAN ERIC   Fin
