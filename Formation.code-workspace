@@ -14,6 +14,12 @@
 		},
 		{
 			"path": "Exercice-Build"
+		},
+		{
+			"path": "NodeWeb"
+		},
+		{
+			"path": "API-REST"
 		}
 	],
 	"settings": {}
