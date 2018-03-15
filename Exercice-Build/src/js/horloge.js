@@ -1,26 +1,28 @@
-(function(global) {
-  'use strict';
+'use strict';
 
-  class Horloge {
-    /**
-     * @constructor
-     * @param {HTMLElement} container
-     */
-    constructor(container) {
-      this._container = container;
-    }
+import format from 'date-fns/format';
 
-    _render() {
-      const now = new Date();
-      this._container.innerText = now.toLocaleTimeString();
-    }
-
-    start() {
-      this._render();
-      setInterval(this._render.bind(this), 1000);
-    }
+export class Horloge {
+  /**
+   * @constructor
+   * @param {HTMLElement} container
+   */
+  constructor(container) {
+    this._container = container;
   }
 
-  global.Horloge = Horloge;
+  _render() {
+    const now = new Date();
+    this._container.innerText = format(now, 'HH:mm:ss');
+  }
 
-}(window));
+  start() {
+    this._render();
+    this.id = setInterval(this._render.bind(this), 1000);
+  }
+
+  stop() {
+    clearInterval(this.id);
+    this.id = null;
+  }
+}

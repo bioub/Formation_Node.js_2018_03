@@ -51,6 +51,12 @@ class Jeu {
     this._essais = [];
   }
 
+  /*
+  static getClass() {
+    return 'Jeu';
+  }
+  */
+
   jouer() {
     if (this._essais.length) {
       // 5 - Template literal / template string
