@@ -1,4 +1,4 @@
-const { Observable } = require('rxjs')
+const { Observable } = require('rxjs');
 
 function timeout(delay) {
   return new Promise((resolve, reject) => {

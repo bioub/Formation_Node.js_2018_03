@@ -4,6 +4,7 @@
     "express": "^4.16.3"
   },
   "scripts": {
-    "start": "node src"
+    "start": "node src",
+    "start:dev": "nodemon src"
   }
 }

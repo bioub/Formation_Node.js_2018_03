@@ -37,7 +37,7 @@ async function buildHtml() {
   let content = buffer.toString();
 
   content = content.replace(
-    /<script src="\.\/js\/horloge\.js">[\s\S]+<\/script>/mg,
+    /<script.*>[\s\S]+<\/script>/mg,
     '<script src="./app.js"></script>'
   );
 

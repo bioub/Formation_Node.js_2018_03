@@ -12,3 +12,24 @@ exports.add = async (req, res, next) => {
   res.json(contact);
 };
 
+
+exports.show = async (req, res, next) => {
+  const id = req.params.id;
+  const contact = await contactService.findById(id);
+  res.json(contact);
+};
+
+
+exports.remove = async (req, res, next) => {
+  const id = req.params.id;
+  const contact = await contactService.remove(id);
+  res.json(contact);
+};
+
+
+exports.replace = async (req, res, next) => {
+  const id = req.params.id;
+  const contact = await contactService.replace(id, req.body);
+  res.json(contact);
+};
+

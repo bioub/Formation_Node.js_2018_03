@@ -11,6 +11,16 @@ router.post('/',
   contactCtrl.add,
 );
 
+router.get('/:id', contactCtrl.show);
+
+router.delete('/:id', contactCtrl.remove);
+
+router.put('/:id',
+  bodyParser.json(),
+  contactCtrl.replace,
+);
+
+
 // Ajouter les routes suivantes
 // GET /api/contacts/:id -> afficher le contact
 // router.get('/:id', contactCtrl.show);
