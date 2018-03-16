@@ -1,4 +1,4 @@
-const contactService = require('../services/contact-array');
+const contactService = require('../services/contact-mongoose');
 
 exports.list = async (req, res, next) => {
   const contacts = await contactService.findAll();
@@ -7,15 +7,25 @@ exports.list = async (req, res, next) => {
 
 
 exports.add = async (req, res, next) => {
-  const contact = await contactService.create(req.body);
-  res.statusCode = 201;
-  res.json(contact);
+  try {
+    const contact = await contactService.create(req.body);
+    res.statusCode = 201;
+    res.json(contact);
+  }
+  catch (err) {
+    next(err);
+  }
 };
 
 
 exports.show = async (req, res, next) => {
   const id = req.params.id;
   const contact = await contactService.findById(id);
+
+  if (!contact) {
+    return next(); // -> notFound
+  }
+
   res.json(contact);
 };
 
@@ -23,6 +33,11 @@ exports.show = async (req, res, next) => {
 exports.remove = async (req, res, next) => {
   const id = req.params.id;
   const contact = await contactService.remove(id);
+
+  if (!contact) {
+    return next(); // -> notFound
+  }
+
   res.json(contact);
 };
 
@@ -30,6 +45,11 @@ exports.remove = async (req, res, next) => {
 exports.replace = async (req, res, next) => {
   const id = req.params.id;
   const contact = await contactService.replace(id, req.body);
+
+  if (!contact) {
+    return next(); // -> notFound
+  }
+
   res.json(contact);
 };
 

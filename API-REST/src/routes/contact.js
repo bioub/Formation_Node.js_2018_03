@@ -1,21 +1,31 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const contactCtrl = require('../controllers/contact');
+const authenticate = require('../middlewares/authenticate');
+const authorize = require('../middlewares/authorize');
 
 const router = express.Router();
 
 router.get('/', contactCtrl.list);
 
 router.post('/',
+  authenticate,
+  authorize('USER'),
   bodyParser.json(),
   contactCtrl.add,
 );
 
 router.get('/:id', contactCtrl.show);
 
-router.delete('/:id', contactCtrl.remove);
+router.delete('/:id',
+  authenticate,
+  authorize('ADMIN'),
+  contactCtrl.remove,
+);
 
 router.put('/:id',
+  authenticate,
+  authorize('USER'),
   bodyParser.json(),
   contactCtrl.replace,
 );

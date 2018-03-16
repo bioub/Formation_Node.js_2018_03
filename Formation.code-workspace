@@ -20,6 +20,12 @@
 		},
 		{
 			"path": "API-REST"
+		},
+		{
+			"path": "Site-Web"
+		},
+		{
+			"path": "API-REST-FROM-YO"
 		}
 	],
 	"settings": {}
