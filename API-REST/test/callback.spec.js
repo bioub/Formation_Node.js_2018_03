@@ -4,14 +4,14 @@ const expect = chai.expect;
 const sinon = require('sinon');
 chai.should();
 
-describe('hello function', () => {
+describe('array.prototype.forEach function', () => {
   let prenoms;
 
   beforeEach(() => {
     prenoms = ['Romain', 'Jean'];
   });
 
-  it('should return Hello Romain !', () => {
+  it('should call callback', () => {
     const spy = sinon.spy();
     prenoms.forEach(spy);
 
